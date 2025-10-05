@@ -1,4 +1,4 @@
-CP04 - Gerenciador de Livros (Spring Boot - Gradle)
+CP04 - Gerenciador de Livros (Spring Boot)
 --------------------------------------------------
 
 Estrutura: pacote base `com.arthur.biblioteca`.
