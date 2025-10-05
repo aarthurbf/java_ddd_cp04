@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"/><title>Form Empréstimo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="p-4">
+<div class="container">
+  <h2>Novo Empréstimo</h2>
+  <form th:action="@{/emprestimos/salvar}" th:object="${emprestimo}" method="post">
+    <div class="mb-3">
+      <label class="form-label">Livro (disponíveis)</label>
+      <select class="form-select" th:field="*{livro.id}">
+        <option th:each="l : ${livros}" th:value="${l.id}" th:text="${l.titulo}">Livro</option>
+      </select>
+      <div th:if="${#fields.hasErrors('livro')}" class="text-danger" th:errors="*{livro}"></div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Usuário</label>
+      <select class="form-select" th:field="*{usuario.id}">
+        <option th:each="u : ${usuarios}" th:value="${u.id}" th:text="${u.nome}">Usuário</option>
+      </select>
+      <div th:if="${#fields.hasErrors('usuario')}" class="text-danger" th:errors="*{usuario}"></div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Data retirada</label>
+      <input type="date" class="form-control" th:field="*{dataRetirada}"/>
+      <div th:if="${#fields.hasErrors('dataRetirada')}" class="text-danger" th:errors="*{dataRetirada}"></div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Data prevista devolução</label>
+      <input type="date" class="form-control" th:field="*{dataPrevistaDevolucao}"/>
+      <div th:if="${#fields.hasErrors('dataPrevistaDevolucao')}" class="text-danger" th:errors="*{dataPrevistaDevolucao}"></div>
+      <div th:if="${#fields.hasErrors('*')}" class="text-danger" th:errors="*{__global__}"></div>
+    </div>
+    <button class="btn btn-primary" type="submit">Registrar Empréstimo</button>
+    <a class="btn btn-link" th:href="@{/emprestimos}">Cancelar</a>
+  </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"/><title>Form Livro</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="p-4">
+<div class="container">
+  <h2 th:text="${livro.id} != null ? 'Editar Livro' : 'Novo Livro'"></h2>
+  <form th:action="@{/livros/salvar}" th:object="${livro}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <div class="mb-3">
+      <label class="form-label">Título</label>
+      <input class="form-control" th:field="*{titulo}"/>
+      <div th:if="${#fields.hasErrors('titulo')}" class="text-danger" th:errors="*{titulo}"></div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Autor</label>
+      <input class="form-control" th:field="*{autor}"/>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Ano</label>
+      <input class="form-control" th:field="*{anoPublicacao}" type="number"/>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Status</label>
+      <select class="form-select" th:field="*{status}">
+        <option th:value="${T(com.arthur.biblioteca.model.Livro.Status).DISPONIVEL}">DISPONÍVEL</option>
+        <option th:value="${T(com.arthur.biblioteca.model.Livro.Status).EMPRESTADO}">EMPRESTADO</option>
+      </select>
+    </div>
+    <button class="btn btn-primary" type="submit">Salvar</button>
+    <a class="btn btn-link" th:href="@{/livros}">Cancelar</a>
+  </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"/><title>Livros</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="p-4">
+<div class="container">
+  <h2>Livros</h2>
+  <div class="mb-2">
+    <a class="btn btn-primary" th:href="@{/livros/novo}">Novo Livro</a>
+    <a class="btn btn-outline-success" th:href="@{/livros/disponiveis}">Mostrar só disponíveis</a>
+    <a class="btn btn-link" th:href="@{/}">Voltar</a>
+  </div>
+  <table class="table table-striped">
+    <thead><tr><th>Título</th><th>Autor</th><th>Ano</th><th>Status</th><th>Ações</th></tr></thead>
+    <tbody>
+      <tr th:each="l : ${livros}">
+        <td th:text="${l.titulo}">Título</td>
+        <td th:text="${l.autor}">Autor</td>
+        <td th:text="${l.anoPublicacao}">Ano</td>
+        <td th:text="${l.status}">Status</td>
+        <td>
+          <a th:href="@{/livros/editar/{id}(id=${l.id})}" class="btn btn-sm btn-warning">Editar</a>
+          <a th:href="@{/livros/excluir/{id}(id=${l.id})}" class="btn btn-sm btn-danger"
+             onclick="return confirm('Deseja excluir?')">Excluir</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

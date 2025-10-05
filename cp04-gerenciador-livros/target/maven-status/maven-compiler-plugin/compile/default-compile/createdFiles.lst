@@ -1,0 +1,13 @@
+com\arthur\biblioteca\model\Livro.class
+com\arthur\biblioteca\validator\DataPrevistaValidaValidator.class
+com\arthur\biblioteca\model\Emprestimo.class
+com\arthur\biblioteca\controller\UsuarioController.class
+com\arthur\biblioteca\repository\EmprestimoRepository.class
+com\arthur\biblioteca\repository\UsuarioRepository.class
+com\arthur\biblioteca\repository\LivroRepository.class
+com\arthur\biblioteca\BibliotecaApplication.class
+com\arthur\biblioteca\controller\EmprestimoController.class
+com\arthur\biblioteca\model\Usuario.class
+com\arthur\biblioteca\controller\LivroController.class
+com\arthur\biblioteca\model\Livro$Status.class
+com\arthur\biblioteca\validator\DataPrevistaValida.class
